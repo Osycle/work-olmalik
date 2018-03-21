@@ -3339,24 +3339,24 @@ pre {
   max-height: 340px;
   overflow-y: scroll; }
 
-.container {
+.container, .vi .vi-container, .vi .vi-content {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px; }
-  .container:before, .container:after {
+  .container:before, .vi .vi-container:before, .vi .vi-content:before, .container:after, .vi .vi-container:after, .vi .vi-content:after {
     content: " ";
     display: table; }
-  .container:after {
+  .container:after, .vi .vi-container:after, .vi .vi-content:after {
     clear: both; }
   @media (min-width: 768px) {
-    .container {
+    .container, .vi .vi-container, .vi .vi-content {
       width: 750px; } }
   @media (min-width: 992px) {
-    .container {
+    .container, .vi .vi-container, .vi .vi-content {
       width: 970px; } }
   @media (min-width: 1200px) {
-    .container {
+    .container, .vi .vi-container, .vi .vi-content {
       width: 1170px; } }
 
 .container-fluid {
@@ -3370,13 +3370,13 @@ pre {
   .container-fluid:after {
     clear: both; }
 
-.row {
+.row, .vi {
   margin-left: -15px;
   margin-right: -15px; }
-  .row:before, .row:after {
+  .row:before, .vi:before, .row:after, .vi:after {
     content: " ";
     display: table; }
-  .row:after {
+  .row:after, .vi:after {
     clear: both; }
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
@@ -13529,7 +13529,7 @@ http://flickity.metafizzy.co
   z-index: 110;
   right: 0;
   left: 0;
-  position: absolute;
+  position: fixed;
   color: white; }
   @media (max-width: 991px) {
     #header {
@@ -13537,26 +13537,78 @@ http://flickity.metafizzy.co
 
 .header-hidden {
   background-color: #463e76;
-  height: 100px;
+  height: 75px;
   display: block; }
   @media (min-width: 991px) {
     .header-hidden {
       display: none; } }
 
-.header-top-content p, .header-top-content strong {
-  line-height: 140%; }
+.header-top-content {
+  -webkit-transition: all 0.3s ease-out 0.0s;
+  -o-transition: all 0.3s ease-out 0.0s;
+  transition: all 0.3s ease-out 0.0s;
+  -webkit-transform-origin: 50% 0;
+  -ms-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transform: unset;
+  -ms-transform: unset;
+  transform: unset; }
+  .header-top-content p, .header-top-content strong {
+    line-height: 140%; }
 
-.header-scroll {
-  -webkit-animation: slideInDown 0.3s ease-in-out;
-  animation: slideInDown 0.3s ease-in-out; }
-  .header-scroll .menu, .header-scroll .soc, .header-scroll .phones {
-    -webkit-transition: all 0.35s ease-out;
-    -o-transition: all 0.35s ease-out;
-    transition: all 0.35s ease-out; }
-  .header-scroll.scrolled {
-    -webkit-animation: fadeIn 0.5s ease-in-out;
-    animation: fadeIn 0.5s ease-in-out;
-    position: fixed !important; }
+.header-bottom-content {
+  -webkit-transform-origin: 50% 0;
+  -ms-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transform: unset;
+  -ms-transform: unset;
+  transform: unset;
+  -webkit-transition: all 0.4s ease 0.5s;
+  -o-transition: all 0.4s ease 0.5s;
+  transition: all 0.4s ease 0.5s;
+  -webkit-box-shadow: 0 5px 20px -5px black;
+  box-shadow: 0 5px 20px -5px black; }
+
+.header-scroll .menu, .header-scroll .soc, .header-scroll .phones {
+  -webkit-transition: all 0.35s ease-out;
+  -o-transition: all 0.35s ease-out;
+  transition: all 0.35s ease-out; }
+
+.header-scroll .menu nav > ul > li > a {
+  -webkit-transition: background 0.35s ease-out;
+  -o-transition: background 0.35s ease-out;
+  transition: background 0.35s ease-out; }
+
+.header-scroll.scrolled.up a, .header-scroll.scrolled.up li {
+  -webkit-transition: unset;
+  -o-transition: unset;
+  transition: unset; }
+
+.header-scroll.scrolled.up .header-top-content {
+  -webkit-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  -webkit-transition: all 0.3s ease-out 0.4s;
+  -o-transition: all 0.3s ease-out 0.4s;
+  transition: all 0.3s ease-out 0.4s;
+  -webkit-transform: perspective(1800px) rotateX(-125deg);
+  transform: perspective(1800px) rotateX(-125deg);
+  opacity: 0.9; }
+  .header-scroll.scrolled.up .header-top-content:hover {
+    color: white;
+    opacity: 1;
+    -webkit-transition: all 0.3s ease-out 0.00s;
+    -o-transition: all 0.3s ease-out 0.00s;
+    transition: all 0.3s ease-out 0.00s;
+    -webkit-transform: unset;
+    -ms-transform: unset;
+    transform: unset; }
+
+.header-scroll.scrolled.up .header-bottom-content {
+  -webkit-transition: all 0.4s ease 0.05s;
+  -o-transition: all 0.4s ease 0.05s;
+  transition: all 0.4s ease 0.05s;
+  -webkit-transform: perspective(1800px) rotateX(-90deg);
+  transform: perspective(1800px) rotateX(-90deg); }
 
 .logo img {
   width: 100%;
@@ -13603,7 +13655,6 @@ http://flickity.metafizzy.co
       color: #463e76; }
 
 .menu {
-  height: 75px;
   text-align: center; }
   .menu ul:not([class*="sub-menu"]) > li {
     display: inline-block;
@@ -13636,7 +13687,8 @@ http://flickity.metafizzy.co
     font-size: 0.90em; }
   .menu .sub-menu-1 {
     padding: 3px 5px;
-    position: relative; }
+    position: relative;
+    z-index: 100; }
     .menu .sub-menu-1 li {
       font-size: 11px;
       text-align: left;
@@ -14000,7 +14052,7 @@ a[target="_blank"] {
   z-index: 0;
   position: relative;
   background-color: black; }
-  .main-slider > .container {
+  .main-slider > .container, .vi .main-slider > .vi-container, .vi .main-slider > .vi-content {
     position: relative; }
   @media (max-width: 991px) {
     .main-slider {
@@ -14013,11 +14065,23 @@ a[target="_blank"] {
   padding: 0;
   overflow: hidden !important;
   height: 100%; }
+  .fullscreen-container li > img {
+    z-index: 2; }
+  .fullscreen-container .wrapper-bg {
+    display: none;
+    pointer-events: none;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1; }
+
+.arrow-container {
+  position: relative;
+  top: -50%; }
 
 .rev-slider {
   -ms-touch-action: auto !important;
   touch-action: auto !important; }
-  .rev-slider .container {
+  .rev-slider .container, .rev-slider .vi .vi-container, .vi .rev-slider .vi-container, .rev-slider .vi .vi-content, .vi .rev-slider .vi-content {
     display: block; }
   .rev-slider .slide-header {
     padding: 0 15px;
@@ -14036,23 +14100,22 @@ a[target="_blank"] {
       text-transform: uppercase;
       margin: 0;
       padding: 10px 5px;
-      font-size: 50px;
-      font-weight: 700;
-      background-color: rgba(70, 62, 118, 0.5); }
+      font-size: 33px;
+      font-weight: 700; }
     .rev-slider .slide-header p {
       font-weight: 400;
       display: inline-block;
       font-size: 14px;
       line-height: 30px;
       padding: 3px;
-      background-color: rgba(0, 0, 0, 0.4); }
+      text-transform: uppercase; }
     .rev-slider .slide-header .btn-def {
       font-size: 14px;
       margin-top: 30px;
       width: 220px; }
   @media (min-width: 992px) {
     .rev-slider .slide-header {
-      width: 30%; }
+      width: 40%; }
     .rev-slider p {
       width: 70%; } }
   @media (max-width: 991px) {
@@ -14090,65 +14153,33 @@ a[target="_blank"] {
 /*
 					-------MAIN-------
 */
-.search {
-  z-index: 1; }
-  @media (min-width: 992px) {
-    .search {
-      width: 100%;
-      position: absolute; } }
-
-.search-content {
-  padding: 25px 60px;
-  background-color: #463e76;
-  margin: auto; }
-  .search-content .wrapper-bg {
-    background-image: url("../img/other/texture-1.png");
-    -webkit-background-size: 300px 300px;
-    background-size: 300px;
-    background-position: top;
-    -webkit-filter: invert(1);
-    filter: invert(1);
-    opacity: 0.3; }
-  .search-content form {
-    position: relative; }
-    .search-content form input {
-      color: black;
-      padding: 5px 25px;
-      height: 40px;
-      border: 0;
-      width: 100%;
-      -webkit-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out;
-      font-size: 0.9em; }
-      .search-content form input:focus {
-        letter-spacing: 2px; }
-  .search-content button {
-    background-color: #333;
+.search-nav-content {
+  position: relative; }
+  .search-nav-content form .search-input {
+    width: 300px;
+    height: 23px; }
+  .search-nav-content form input {
+    border: 0;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 100%;
+    width: 100%;
     color: white;
-    padding: 5px 30px;
+    padding: 0 15px; }
+  .search-nav-content button {
+    color: white;
+    padding: 5px 10px;
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
-    border: 0; }
-    .search-content button i {
-      font-size: 20px; }
-  @media (min-width: 992px) {
-    .search-content {
-      width: 80%;
-      -webkit-transform: translateY(-50px);
-      -ms-transform: translateY(-50px);
-      transform: translateY(-50px); } }
-  @media (max-width: 991px) {
-    .search-content {
-      margin: 30px 0; }
-      .search-content button {
-        padding: 5px 15px; }
-        .search-content button, .search-content button *:not(i) {
-          font-size: 0; }
-        .search-content button i {
-          font-size: 15px; } }
+    border: 0;
+    background-color: transparent; }
+
+.vie-content li {
+  font-size: 18px;
+  margin: 0 5px; }
 
 .texture.wrapper-bg {
   z-index: -1;
@@ -14748,6 +14779,190 @@ a[target="_blank"] {
     line-height: 80px; }
   .carousel-stand .carousel-nav .carousel-cell.is-nav-selected {
     background: #ED2; }
+
+/*
+	vi
+*/
+.chess-black, .style-black, .style-white [class*='btn-default'], .style-black [class*='btn-default'] [class*='btn-default'], .style-black button [class*='btn-default'], .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'], .vi-active .vi-bg-color-white .vi [class*='btn-default'], .style-white button, .style-black [class*='btn-default'] button, .style-black button button, .vi-active .vi-bg-color-white *:not(.vi-over) * button, .vi-active .vi-bg-color-white .vi button, .style-white [class*='btn-default'] *, .style-black [class*='btn-default'] [class*='btn-default'] *, .style-black button [class*='btn-default'] *, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] *, .vi-active .vi-bg-color-white .vi [class*='btn-default'] *, .style-white button *, .style-black [class*='btn-default'] button *, .style-black button button *, .vi-active .vi-bg-color-white *:not(.vi-over) * button *, .vi-active .vi-bg-color-white .vi button *, .vi-active .vi-bg-color-black *:not(.vi-over) *, .vi-active .vi-bg-color-black .vi, .style-black .is-selected, .vi-active .vi-bg-color-black *:not(.vi-over) * .is-selected, .vi-active .vi-bg-color-black .vi .is-selected, .style-white .is-selected, .vi-active .vi-bg-color-white *:not(.vi-over) * .is-selected, .vi-active .vi-bg-color-white .vi .is-selected {
+  color: white  !important;
+  background: black !important;
+  border-color: white !important; }
+
+.chess-white, .style-black [class*='btn-default']:hover, .style-black button:hover, .style-white, .style-black [class*='btn-default'], .style-white [class*='btn-default'] [class*='btn-default'], .style-white button [class*='btn-default'], .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'], .vi-active .vi-bg-color-black .vi [class*='btn-default'], .style-black button, .style-white [class*='btn-default'] button, .style-white button button, .vi-active .vi-bg-color-black *:not(.vi-over) * button, .vi-active .vi-bg-color-black .vi button, .style-black [class*='btn-default'] *, .style-white [class*='btn-default'] [class*='btn-default'] *, .style-white button [class*='btn-default'] *, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] *, .vi-active .vi-bg-color-black .vi [class*='btn-default'] *, .style-black button *, .style-white [class*='btn-default'] button *, .style-white button button *, .vi-active .vi-bg-color-black *:not(.vi-over) * button *, .vi-active .vi-bg-color-black .vi button *, .vi-active .vi-bg-color-white *:not(.vi-over) *, .vi-active .vi-bg-color-white .vi, .style-white [class*='btn-default']:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default']:hover, .vi-active .vi-bg-color-white .vi [class*='btn-default']:hover, .style-white button:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * button:hover, .vi-active .vi-bg-color-white .vi button:hover {
+  color: black  !important;
+  background: white !important;
+  border-color: black !important; }
+
+.style-black [class*='btn-default'], .style-white [class*='btn-default'] [class*='btn-default'], .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] [class*='btn-default'], .vi-active .vi-bg-color-white .vi [class*='btn-default'] [class*='btn-default'], .style-white button [class*='btn-default'], .vi-active .vi-bg-color-white *:not(.vi-over) * button [class*='btn-default'], .vi-active .vi-bg-color-white .vi button [class*='btn-default'], .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'], .vi-active .vi-bg-color-black .vi [class*='btn-default'], .style-black button, .style-white [class*='btn-default'] button, .style-black [class*='btn-default'] [class*='btn-default'] button, .style-black button [class*='btn-default'] button, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] button, .vi-active .vi-bg-color-white .vi [class*='btn-default'] button, .style-white button button, .style-black [class*='btn-default'] button button, .vi-active .vi-bg-color-white *:not(.vi-over) * button button, .vi-active .vi-bg-color-white .vi button button, .vi-active .vi-bg-color-black *:not(.vi-over) * button, .vi-active .vi-bg-color-black .vi button {
+  border: 2px solid transparent; }
+  .style-black [class*='btn-default']:hover, .style-white [class*='btn-default'] [class*='btn-default']:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] [class*='btn-default']:hover, .vi-active .vi-bg-color-white .vi [class*='btn-default'] [class*='btn-default']:hover, .style-white button [class*='btn-default']:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * button [class*='btn-default']:hover, .vi-active .vi-bg-color-white .vi button [class*='btn-default']:hover, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default']:hover, .vi-active .vi-bg-color-black .vi [class*='btn-default']:hover, .style-black button:hover, .style-white [class*='btn-default'] button:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] button:hover, .vi-active .vi-bg-color-white .vi [class*='btn-default'] button:hover, .style-white button button:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * button button:hover, .vi-active .vi-bg-color-white .vi button button:hover, .vi-active .vi-bg-color-black *:not(.vi-over) * button:hover, .vi-active .vi-bg-color-black .vi button:hover {
+    border: 2px solid white; }
+    .style-black [class*='btn-default']:hover a, .style-white [class*='btn-default'] [class*='btn-default']:hover a, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] [class*='btn-default']:hover a, .vi-active .vi-bg-color-white .vi [class*='btn-default'] [class*='btn-default']:hover a, .style-white button [class*='btn-default']:hover a, .vi-active .vi-bg-color-white *:not(.vi-over) * button [class*='btn-default']:hover a, .vi-active .vi-bg-color-white .vi button [class*='btn-default']:hover a, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default']:hover a, .vi-active .vi-bg-color-black .vi [class*='btn-default']:hover a, .style-black button:hover a, .style-white [class*='btn-default'] button:hover a, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] button:hover a, .vi-active .vi-bg-color-white .vi [class*='btn-default'] button:hover a, .style-white button button:hover a, .vi-active .vi-bg-color-white *:not(.vi-over) * button button:hover a, .vi-active .vi-bg-color-white .vi button button:hover a, .vi-active .vi-bg-color-black *:not(.vi-over) * button:hover a, .vi-active .vi-bg-color-black .vi button:hover a {
+      color: white;
+      background: black; }
+
+.style-black ul li:hover, .style-white [class*='btn-default'] ul li:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] ul li:hover, .vi-active .vi-bg-color-white .vi [class*='btn-default'] ul li:hover, .style-white button ul li:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * button ul li:hover, .vi-active .vi-bg-color-white .vi button ul li:hover, .vi-active .vi-bg-color-black *:not(.vi-over) * ul li:hover, .vi-active .vi-bg-color-black .vi ul li:hover, .style-black ul li.active, .style-white [class*='btn-default'] ul li.active, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] ul li.active, .vi-active .vi-bg-color-white .vi [class*='btn-default'] ul li.active, .style-white button ul li.active, .vi-active .vi-bg-color-white *:not(.vi-over) * button ul li.active, .vi-active .vi-bg-color-white .vi button ul li.active, .vi-active .vi-bg-color-black *:not(.vi-over) * ul li.active, .vi-active .vi-bg-color-black .vi ul li.active {
+  color: black !important;
+  background: white !important;
+  border-color: black !important; }
+  .style-black ul li:hover a, .style-white [class*='btn-default'] ul li:hover a, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] ul li:hover a, .vi-active .vi-bg-color-white .vi [class*='btn-default'] ul li:hover a, .style-white button ul li:hover a, .vi-active .vi-bg-color-white *:not(.vi-over) * button ul li:hover a, .vi-active .vi-bg-color-white .vi button ul li:hover a, .vi-active .vi-bg-color-black *:not(.vi-over) * ul li:hover a, .vi-active .vi-bg-color-black .vi ul li:hover a, .style-black ul li.active a, .style-white [class*='btn-default'] ul li.active a, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'] ul li.active a, .vi-active .vi-bg-color-white .vi [class*='btn-default'] ul li.active a, .style-white button ul li.active a, .vi-active .vi-bg-color-white *:not(.vi-over) * button ul li.active a, .vi-active .vi-bg-color-white .vi button ul li.active a, .vi-active .vi-bg-color-black *:not(.vi-over) * ul li.active a, .vi-active .vi-bg-color-black .vi ul li.active a {
+    background: inherit;
+    color: inherit; }
+
+.style-white [class*='btn-default'], .style-black [class*='btn-default'] [class*='btn-default'], .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] [class*='btn-default'], .vi-active .vi-bg-color-black .vi [class*='btn-default'] [class*='btn-default'], .style-black button [class*='btn-default'], .vi-active .vi-bg-color-black *:not(.vi-over) * button [class*='btn-default'], .vi-active .vi-bg-color-black .vi button [class*='btn-default'], .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default'], .vi-active .vi-bg-color-white .vi [class*='btn-default'], .style-white button, .style-black [class*='btn-default'] button, .style-white [class*='btn-default'] [class*='btn-default'] button, .style-white button [class*='btn-default'] button, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] button, .vi-active .vi-bg-color-black .vi [class*='btn-default'] button, .style-black button button, .style-white [class*='btn-default'] button button, .vi-active .vi-bg-color-black *:not(.vi-over) * button button, .vi-active .vi-bg-color-black .vi button button, .vi-active .vi-bg-color-white *:not(.vi-over) * button, .vi-active .vi-bg-color-white .vi button {
+  border: 2px solid transparent; }
+  .style-white [class*='btn-default']:hover, .style-black [class*='btn-default'] [class*='btn-default']:hover, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] [class*='btn-default']:hover, .vi-active .vi-bg-color-black .vi [class*='btn-default'] [class*='btn-default']:hover, .style-black button [class*='btn-default']:hover, .vi-active .vi-bg-color-black *:not(.vi-over) * button [class*='btn-default']:hover, .vi-active .vi-bg-color-black .vi button [class*='btn-default']:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default']:hover, .vi-active .vi-bg-color-white .vi [class*='btn-default']:hover, .style-white button:hover, .style-black [class*='btn-default'] button:hover, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] button:hover, .vi-active .vi-bg-color-black .vi [class*='btn-default'] button:hover, .style-black button button:hover, .vi-active .vi-bg-color-black *:not(.vi-over) * button button:hover, .vi-active .vi-bg-color-black .vi button button:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * button:hover, .vi-active .vi-bg-color-white .vi button:hover {
+    border: 2px solid black; }
+    .style-white [class*='btn-default']:hover a, .style-black [class*='btn-default'] [class*='btn-default']:hover a, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] [class*='btn-default']:hover a, .vi-active .vi-bg-color-black .vi [class*='btn-default'] [class*='btn-default']:hover a, .style-black button [class*='btn-default']:hover a, .vi-active .vi-bg-color-black *:not(.vi-over) * button [class*='btn-default']:hover a, .vi-active .vi-bg-color-black .vi button [class*='btn-default']:hover a, .vi-active .vi-bg-color-white *:not(.vi-over) * [class*='btn-default']:hover a, .vi-active .vi-bg-color-white .vi [class*='btn-default']:hover a, .style-white button:hover a, .style-black [class*='btn-default'] button:hover a, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] button:hover a, .vi-active .vi-bg-color-black .vi [class*='btn-default'] button:hover a, .style-black button button:hover a, .vi-active .vi-bg-color-black *:not(.vi-over) * button button:hover a, .vi-active .vi-bg-color-black .vi button button:hover a, .vi-active .vi-bg-color-white *:not(.vi-over) * button:hover a, .vi-active .vi-bg-color-white .vi button:hover a {
+      color: black;
+      background: white; }
+
+.style-white ul li:hover, .style-black [class*='btn-default'] ul li:hover, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] ul li:hover, .vi-active .vi-bg-color-black .vi [class*='btn-default'] ul li:hover, .style-black button ul li:hover, .vi-active .vi-bg-color-black *:not(.vi-over) * button ul li:hover, .vi-active .vi-bg-color-black .vi button ul li:hover, .vi-active .vi-bg-color-white *:not(.vi-over) * ul li:hover, .vi-active .vi-bg-color-white .vi ul li:hover, .style-white ul li.active, .style-black [class*='btn-default'] ul li.active, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] ul li.active, .vi-active .vi-bg-color-black .vi [class*='btn-default'] ul li.active, .style-black button ul li.active, .vi-active .vi-bg-color-black *:not(.vi-over) * button ul li.active, .vi-active .vi-bg-color-black .vi button ul li.active, .vi-active .vi-bg-color-white *:not(.vi-over) * ul li.active, .vi-active .vi-bg-color-white .vi ul li.active {
+  color: white !important;
+  background: black !important;
+  border-color: white !important; }
+  .style-white ul li:hover a, .style-black [class*='btn-default'] ul li:hover a, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] ul li:hover a, .vi-active .vi-bg-color-black .vi [class*='btn-default'] ul li:hover a, .style-black button ul li:hover a, .vi-active .vi-bg-color-black *:not(.vi-over) * button ul li:hover a, .vi-active .vi-bg-color-black .vi button ul li:hover a, .vi-active .vi-bg-color-white *:not(.vi-over) * ul li:hover a, .vi-active .vi-bg-color-white .vi ul li:hover a, .style-white ul li.active a, .style-black [class*='btn-default'] ul li.active a, .vi-active .vi-bg-color-black *:not(.vi-over) * [class*='btn-default'] ul li.active a, .vi-active .vi-bg-color-black .vi [class*='btn-default'] ul li.active a, .style-black button ul li.active a, .vi-active .vi-bg-color-black *:not(.vi-over) * button ul li.active a, .vi-active .vi-bg-color-black .vi button ul li.active a, .vi-active .vi-bg-color-white *:not(.vi-over) * ul li.active a, .vi-active .vi-bg-color-white .vi ul li.active a {
+    background: inherit;
+    color: inherit; }
+
+.vi-active body.vi-grayscale {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1); }
+
+.vi-active .vi-font-size-1 {
+  font-size: 14px; }
+
+.vi-active .vi-font-size-2 {
+  font-size: 16px; }
+
+.vi-active .vi-font-size-3 {
+  font-size: 18px; }
+
+.vi-active .vi-font-size-4 {
+  font-size: 22px; }
+
+.vi-active .vi-font-size-5 {
+  font-size: 26px; }
+
+.vi-active .vi-img-visibility-hidden img, .vi-active .vi-img-visibility-hidden iframe, .vi-active .vi-img-visibility-hidden * img, .vi-active .vi-img-visibility-hidden * iframe {
+  visibility: hidden; }
+
+.vi-active .vi-img-visibility-hidden .vi-img-visibility-show img, .vi-active .vi-img-visibility-hidden .vi-img-visibility-show iframe, .vi-active .vi-img-visibility-hidden .vi-img-visibility-show * img, .vi-active .vi-img-visibility-hidden .vi-img-visibility-show * iframe {
+  visibility: initial !important; }
+
+.vi-active .vi-img-visibility-hidden .vi-img-visibility-none {
+  display: none !important; }
+
+.vi {
+  z-index: 5454545;
+  position: fixed; }
+  .vi.active {
+    display: block; }
+  .vi.deactive {
+    display: none; }
+  .vi * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .vi h5 {
+    font-size: 15px; }
+  .vi .vi-content {
+    text-align: center; }
+    .vi .vi-content li {
+      text-transform: uppercase;
+      display: inline-block;
+      margin-left: 5px; }
+  .vi .vi-table-center {
+    margin: 0 0px; }
+    .vi .vi-table-center > * {
+      vertical-align: middle;
+      display: inline-table;
+      width: initial; }
+  .vi .vi-font-size h5 {
+    font-weight: 500; }
+  .vi .vi-font-size li {
+    font-weight: 700;
+    vertical-align: baseline;
+    border: 2px solid transparent;
+    padding: 5px 5px;
+    color: #111; }
+    .vi .vi-font-size li:hover {
+      cursor: pointer; }
+  .vi .vi-font-size > div {
+    margin: 0 15px; }
+  .vi .vi-font-size #fs-range {
+    width: 100px;
+    margin: 0 15px; }
+  .vi .vi-bg-color .vi-bg-color-list [class*="vi-bg-color"] {
+    width: 50px;
+    height: 50px;
+    overflow: hidden; }
+    .vi .vi-bg-color .vi-bg-color-list [class*="vi-bg-color"].active {
+      top: 11.5px;
+      border: 2.5px dashed gray; }
+    .vi .vi-bg-color .vi-bg-color-list [class*="vi-bg-color"]:hover {
+      cursor: pointer; }
+    .vi .vi-bg-color .vi-bg-color-list [class*="vi-bg-color"] span {
+      top: 0;
+      top: 11.5px;
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+      position: relative; }
+  .vi .vi-bg-color .vi-bg-color-1 {
+    background: black !important; }
+    .vi .vi-bg-color .vi-bg-color-1 span {
+      background-color: white !important; }
+  .vi .vi-bg-color .vi-bg-color-2 {
+    background: white !important; }
+    .vi .vi-bg-color .vi-bg-color-2 span {
+      background-color: black !important; }
+  .vi .vi-img-visibility {
+    margin: 0 25px; }
+    .vi .vi-img-visibility .vi-img-visibility-list [class*="vi-img-visibility"] {
+      width: 30px;
+      height: 30px; }
+      .vi .vi-img-visibility .vi-img-visibility-list [class*="vi-img-visibility"]:hover {
+        cursor: pointer; }
+      .vi .vi-img-visibility .vi-img-visibility-list [class*="vi-img-visibility"].active span {
+        -webkit-border-radius: 0;
+        border-radius: 0;
+        width: 2px;
+        height: 2px;
+        margin-top: -10px;
+        background-color: black;
+        border: 2px solid black; }
+      .vi .vi-img-visibility .vi-img-visibility-list [class*="vi-img-visibility"] span {
+        top: 50%;
+        display: inline-block;
+        margin-top: -7.5px;
+        width: 15px;
+        height: 15px;
+        position: relative;
+        vertical-align: top; }
+    .vi .vi-img-visibility .vi-img-visibility-list .vi-img-visibility-1 {
+      background-color: black;
+      border: 2px solid white; }
+    .vi .vi-img-visibility .vi-img-visibility-list .vi-img-visibility-2 {
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      border: 6px dashed gray;
+      background-color: white; }
+  .vi .vi-reset {
+    margin: 5px 0;
+    font-size: 15px; }
+    .vi .vi-reset button {
+      -webkit-transition: all 0.3s ease-out;
+      -o-transition: all 0.3s ease-out;
+      transition: all 0.3s ease-out;
+      border: 0;
+      padding: 10px 30px;
+      background-color: white; }
+      .vi .vi-reset button:hover {
+        color: white;
+        background-color: black; }
 
 /*
 		_helper.scss	
@@ -16796,7 +17011,7 @@ html .p-r-120 {
   vertical-align: middle;
   text-align: center; }
 
-.fuller, .cell-hover, .hover-content .cell-hover, .min-menu-header .wrapper-bg, .form-modal .wrapper-bg, .search-content .wrapper-bg, .texture.wrapper-bg, .short-services .wrapper-bg, .short-tour .wrapper-bg, .tour .wrapper-bg, .claf, [data-flicker]:before {
+.fuller, .cell-hover, .hover-content .cell-hover, .min-menu-header .wrapper-bg, .form-modal .wrapper-bg, .fullscreen-container .wrapper-bg, .texture.wrapper-bg, .short-services .wrapper-bg, .short-tour .wrapper-bg, .tour .wrapper-bg, .claf, [data-flicker]:before {
   height: 100%;
   width: 100%;
   position: absolute;

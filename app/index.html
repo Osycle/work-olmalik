@@ -51,14 +51,14 @@
 								<ul>
 									<li><a href="index.html" title="Главная">Главная</a></li>
 									<li><a href="news.html" title="Новости">Новости</a>
-										<ul>
-											<li>События в мире</li>
-											<li>В Узбекистане
-												<ul>
-													<li>Общество</li>
-													<li>Культура</li>
-													<li>Наука и Техно</li>
-													<li>Спорт</li>
+										<ul class="sub-menu-1">
+											<li><a href="" title="События в мире">События в мире</a></li>
+											<li><a href="" title="В Узбекистане">В Узбекистане</a>
+												<ul class="sub-menu-2">
+													<li><a href="" title="Общество">Общество</a></li>
+													<li><a href="" title="Культура">Культура</a></li>
+													<li><a href="" title="Наука и Техно">Наука и Техно</a></li>
+													<li><a href="" title="Спорт">Спорт</a></li>
 												</ul>
 											</li>
 										</ul>
@@ -66,7 +66,11 @@
 									<li><a href="about.html" title="Алмалык город наш">Алмалык город наш</a>
 										<ul class="sub-menu-1">
 											<li><a href="" title="История Алмалыка">История Алмалыка</a></li>
-											<li><a href="" title="Общие сведения и статистика">Общие сведения и статистика</a></li>
+											<li><a href="" title="Общие сведения и статистика">Общие сведения и статистика</a>
+												<ul class="sub-menu-2">
+								 					<li><a href="" title="Экспорт и импорт города">Экспорт и импорт города</a></li>
+												</ul>
+											</li>
 											<li><a href="" title="Карта корода">Карта корода</a></li>
 											<li><a href="" title="Фотогалерея">Фотогалерея</a></li>
 											<li><a href="" title="Погода">Погода</a></li>
@@ -82,11 +86,23 @@
 											</li>
 										</ul>
 									</li>
-									<li><a href="hokimiyat.html" title="Хокимият города">Хокимият города</a></li>
-									<li><a href="ourinterviews.html" title="Наши интервью">Наши интервью</a></li>
-									<li><a href="opinions.html" title="Мнения">Мнения</a></li>
-									<li><a href="popular.html" title="Популярное">Популярное</a></li>
-									<li><a href="publicity.html" title="Реклама фото дня">Реклама фото дня</a></li>
+									<li><a href="hokimiyat.html" title="Хокимият города">Хокимият города</a>
+										<ul class="sub-menu-1">
+											<li><a href="" title="Cтруктура">Cтруктура</a></li>
+											<li><a href="" title="Руководство">Руководство</a></li>
+											<li><a href="" title="Порядок приёма гражда">Порядок приёма гражда</a></li>
+										</ul>
+									</li>
+									<li><a href="" title="">Интересное</a>
+										<ul class="sub-menu-1">
+											<li><a href="ourinterviews.html" title="Наши интервью">Наши интервью</a></li>
+											<li><a href="opinions.html" title="Мнения">Мнения</a></li>
+											<li><a href="popular.html" title="Популярное">Популярное</a></li>
+											<li><a href="publicity.html" title="Реклама">Реклама</a></li>
+											<li><a href="publicity.html" title="Фото дня">Фото дня</a></li>
+											<li><a href="publicity.html" title="Подписка читателей">Подписка читателей </a></li>
+										</ul>
+									</li>
 									<li><a href="contacts.html" title="Контакты">Контакты</a></li>
 								</ul>
 							</nav>
@@ -97,12 +113,32 @@
 			</div><!-- ./HEADER TOP -->
 
 			<!-- HEADER BOTTOM -->
-			<div class="header-top-content bg-color-2 hidden-sm hidden-xs">
+			<div class="header-bottom-content bg-color-2 hidden-sm hidden-xs">
 				<div class="container">
 					<div class="row">
 
+						<div class="search-nav pie-md-elastic-8">
+							<div class="search-nav-content">
+								<form action="" method="post" accept-charset="utf-8">
+									<div class="search-input relative">
+										<input type="text" name="search">
+										<div class="btn-content">
+											<button type="submit"><i class="fa fa-search"></i></button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+
+						<div class="vie-content pie-md-elastic-2 text-right-md">
+							<ul class="list-inline hover-color-1">
+								<li><a class="vi-btn-toggle" title="Версия для слабовидящих" role="button"><i class="fa fa-eye"></i></a></li>
+								<li><a href="sitemap.html" title="Карта сайта"><i class="fa fa-sitemap"></i></a></li>
+							</ul>
+						</div>
+
 						<!-- LANG -->
-						<div class="lang pie-md-elastic-1 text-uppercase text-right p-h-15">
+						<div class="lang pie-md-elastic-2 text-uppercase text-right-md p-h-15">
 							<ul class="list-inline">
 								<li><a href="">uz</a></li>
 								<li><a href="">rus</a></li>
@@ -131,7 +167,7 @@
 			<div class="wrapper-bg"></div>
 			<div class="col-xs-6">
 				<div class="min-menu-logo">
-					<a href="index.html"><img src="img/logo.svg"/></a>
+					<a href="index.html"><img src="img/logo.png"/></a>
 				</div>
 			</div>
 			<div class="min-menu-bar col-xs-6">
@@ -149,47 +185,38 @@
 			<!-- REV SLIDER -->
 			<div class="main-slider">
 				<div class="fullscreen-container">
+
 					<div class="rev-slider bg-color-white banner-slider">
 						<ul>
-							<li data-transition="fade" data-masterspeed="2000">
+							<li data-transition="fade" data-masterspeed="1000">
 								<img src="img/slider/slide-1.jpg">
+								<div class="wrapper-bg"></div>
 								<div class="container">
 									<div class="tp-caption slide-header customin customout start" data-x="center" data-y="center" data-customin="opacity:0;" data-customout="opacity:0;" data-speed="1800" data-hoffset="0" data-voffset="0" data-start="1200" data-easing="Power4.easeOut" data-endspeed="1000" data-endeasing="Power4.easeIn" data-captionhidden="on">
-										<h1>Arc osiyo</h1>
-										<p>Организация деловых и бизнес мероприятий / Туристические услуги</p>
+										<h1>Президент Узбекистана Шавкат Мирзиёев в пятницу посетил город Алмалык</h1>
+										<p>Ташкентской области, где принял участие в закладке нового рудника Алмалыкского горно-металлургического комбината (АГМК), ознаменовавшей начало второго этапа развития предприятия</p>
 									</div>
 								</div>
 							</li>
-							<li data-transition="fade" data-masterspeed="2000">
+							<li data-transition="fade" data-masterspeed="1000">
 								<img src="img/slider/slide-1.jpg">
+								<div class="wrapper-bg"></div>
 								<div class="container">
 									<div class="tp-caption slide-header customin customout start" data-x="center" data-y="center" data-customin="opacity:0;" data-customout="opacity:0;" data-speed="1800" data-hoffset="0" data-voffset="0" data-start="1200" data-easing="Power4.easeOut" data-endspeed="1000" data-endeasing="Power4.easeIn" data-captionhidden="on">
-										<h1>Arc osiyo</h1>
-										<p>Организация деловых и бизнес мероприятий / Туристические услуги</p>
+										<h1>Ташкентской области, где принял участие в закладке нового рудника Алмалык</h1>
+										<p>Ташкентской области, где принял участие в закладке нового рудника Алмалыкского горно-металлургического комбината (АГМК), ознаменовавшей начало второго этапа развития предприятия</p>
 									</div>
 								</div>
 							</li>
+
 						</ul>
 					</div>
+					<div class="arrow-container container"></div>
 				</div>
 			</div>
 			<!-- ./END SLIDER -->
 			<div class="main-content">
 
-				<!-- search -->
-				<div class="search relative">
-					<div class="container">
-						<div class="search-content">
-							<div class="wrapper-bg"></div>
-							<form action="" method="post" accept-charset="utf-8">
-								<input class="form-control" type="text" name="search" placeholder="Поиск по турам">
-								<div class="btn-content">
-									<button type="submit"><i class="fa fa-search"></i> найти</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div><!-- ./search -->
 
 				<div class="texture wrapper-bg"></div>
 
@@ -221,7 +248,7 @@
 				<div class="footer-content p-v-30 clearfix color-white row">
 					<div class="col-md-4 p-h-15">
 						<div class="footer-logo m-v-30 m-auto">
-							<img src="img/logo.svg">
+							<img src="img/logo.png">
 						</div>
 						<div class="footer-desc m-v-30">
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis nisi vel purus sollicitudin, et vehicula nibh consectetur. Mauris cursus urna eu sem dignissim elementum id eu odio. Fusce pretium augue nunc, sodales luctus lacus convallis a. Nullam vulputate urna vulputate diam ullamcorper, sit amet varius dolor lobortis. Donec maximus ante et libero</p>
