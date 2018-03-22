@@ -403,7 +403,7 @@ $(function(){
 					hideSliderAtLimit:0,
 
 					fullWidth:"on",
-					fullScreen:"on",
+					fullScreen:"off",
 					fullScreenOffsetContainer: "#header",
 
 					dottedOverlay:"none",
@@ -416,7 +416,9 @@ $(function(){
 
 		});
 		var prevnext = $(".tparrows").append('<svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 65,95 L 20,50  L 65,5 L 60,0 Z" class="arrow"></path></svg>')
-		$(".arrow-container.container").append( prevnext );
+		$(".arrow-container.container").append( prevnext ).css( "top", "350" );
+		$(".arrow-container.container").css( "top", "-"+( $(".rev-slider").css("height").match(/(\d+)/gim)[0]/2 ) + "px" );
+
 	});
 }) (jQuery);
 
