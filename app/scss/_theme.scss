@@ -13,6 +13,7 @@ $color-5: #008CC7 !default;	// LIGHT ORANGE
 
 $font-family-1: "Times new roman";
 $font-family-2: "Days";
+$font-family-3: "Arial";
 
 $color-scroll: $color-1;
 $color-footer: #0071BC;
@@ -154,7 +155,7 @@ html{
 }
 
 .list-style-1{
-	ul{
+	ul:not([class]){
 		position: relative;
 		li{
 			list-style: none;
@@ -220,7 +221,7 @@ html{
 		margin:0  15px;
 	}
 	li{
-
+		vertical-align: baseline;
 	}
 }
 
@@ -414,6 +415,7 @@ label{
 
 .font-family-1{font-family: $font-family-1;}
 .font-family-2{font-family: $font-family-2;}
+.font-family-3{font-family: $font-family-3;}
 
 .bg-color-white{background-color: white;}
 .bg-color-black{background-color: #15181e;}

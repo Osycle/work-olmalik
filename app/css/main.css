@@ -4948,6 +4948,22 @@ tbody.collapse.in {
   -o-transition-timing-function: ease;
   transition-timing-function: ease; }
 
+.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  -webkit-border-radius: 4px;
+  border-radius: 4px; }
+  .breadcrumb > li {
+    display: inline-block; }
+    .breadcrumb > li + li:before {
+      content: "/ ";
+      padding: 0 5px;
+      color: #ccc; }
+  .breadcrumb > .active {
+    color: #777777; }
+
 .modal-open {
   overflow: hidden; }
 
@@ -5801,9 +5817,9 @@ html {
 [class*='list-style'].outside li {
   list-style-position: outside; }
 
-.list-style-1 ul, .main-content ul {
+.list-style-1 ul:not([class]), .main-content ul:not([class]) {
   position: relative; }
-  .list-style-1 ul li, .main-content ul li {
+  .list-style-1 ul:not([class]) li, .main-content ul:not([class]) li {
     list-style: none;
     list-style-position: inside;
     list-style-image: url("../img/icons/list-icon.png");
@@ -5838,6 +5854,8 @@ html {
     font-weight: 700;
     font-size: 1.5em;
     margin: 0  15px; }
+  .breadcrumb li {
+    vertical-align: baseline; }
 
 /*
 			TABLE
@@ -5979,6 +5997,9 @@ label {
 
 .font-family-2 {
   font-family: "Days"; }
+
+.font-family-3 {
+  font-family: "Arial"; }
 
 .bg-color-white {
   background-color: white; }
@@ -13245,7 +13266,7 @@ http://flickity.metafizzy.co
 
 [class*="boxes"] {
   text-align: center; }
-  [class*="boxes"] figure *:not([class*="text-right"]):not([class*="text-left"]):not([class*="text-center"]) {
+  [class*="boxes"] figure *:not([class*="text-right"]):not([class*="text-left"]):not([class*="text-center"]):not(p):not(span) {
     text-align: left;
     text-align: initial; }
   [class*="boxes"] > div, [class*="boxes"] > figure {
@@ -13563,7 +13584,7 @@ http://flickity.metafizzy.co
 
 .header-hidden {
   background-color: #463e76;
-  height: 75px;
+  height: 100px;
   display: block; }
   @media (min-width: 991px) {
     .header-hidden {
@@ -13677,6 +13698,10 @@ http://flickity.metafizzy.co
       text-decoration: underline;
       color: #463e76; }
 
+@media (min-width: 992px) {
+  .margin-start-content {
+    margin-top: 125px; } }
+
 .menu {
   text-align: right; }
   .menu ul:not([class*="sub-menu"]) > li {
@@ -13721,7 +13746,7 @@ http://flickity.metafizzy.co
     position: relative;
     z-index: 100; }
     .menu .sub-menu-1 li {
-      font-size: 11px;
+      font-size: 0.9375em;
       text-align: left;
       width: 100%; }
       .menu .sub-menu-1 li:hover .sub-menu-2 {
@@ -13746,9 +13771,9 @@ http://flickity.metafizzy.co
   .menu [class*="sub"] {
     visibility: hidden;
     position: absolute;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
     font-size: 0.9em;
     font-weight: 500;
     z-index: 1;
@@ -14071,6 +14096,12 @@ body, #page {
     .main-content {
       text-align: center; } }
 
+.breadcrumb-container {
+  font-family: "Arial"; }
+  @media (max-width: 991px) {
+    .breadcrumb-container li {
+      width: 100%; } }
+
 a[target="_blank"] {
   color: #463e76;
   text-decoration: underline; }
@@ -14295,13 +14326,24 @@ h3 a {
   font-size: 12px; }
 
 .short-manyread figure .info-panel {
-  margin: 3px 0; }
+  margin: 3px 0;
+  font-size: 0.9em; }
 
 .short-manyread figure .views-count {
   vertical-align: baseline; }
 
 .short-manyread figure .views img {
   width: 17px; }
+
+.manyread-items figure .img-content img {
+  width: 100%; }
+
+.manyread-items .pie-xs-8 {
+  width: 1200px; }
+
+@media (max-width: 991px) {
+  .manyread-items p {
+    font-size: 20px; } }
 
 .views-count.vam {
   vertical-align: baseline; }
@@ -14327,6 +14369,93 @@ h3 a {
 
 .feedback-column textarea {
   height: 150px; }
+
+.m-v-45.over-hidden {
+  margin-top: 47px; }
+
+.about-items {
+  letter-spacing: -5px;
+  margin-left: -3.125%;
+  margin-right: -3.125%; }
+  .about-items * {
+    letter-spacing: 0; }
+  .about-items figure {
+    margin-left: 3.125%;
+    margin-right: 3.125%;
+    width: 18.75%; }
+  .about-items .cell-hover {
+    background-color: rgba(70, 62, 118, 0.5); }
+  .about-items figure .img-content {
+    min-height: 193px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end; }
+    .about-items figure .img-content.center {
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center; }
+    .about-items figure .img-content.top {
+      -webkit-box-align: end;
+      -webkit-align-items: end;
+      -ms-flex-align: end;
+      align-items: end;
+      -webkit-align-items: flex-end;
+      align-items: flex-end; }
+    .about-items figure .img-content.start {
+      -webkit-box-align: start;
+      -webkit-align-items: start;
+      -ms-flex-align: start;
+      align-items: start;
+      -webkit-align-items: flex-start;
+      align-items: flex-start; }
+  .about-items figure .desc-content {
+    font-size: 0.95em; }
+  @media (max-width: 991px) {
+    .about-items {
+      letter-spacing: -5px;
+      margin-left: -5%;
+      margin-right: -5%; }
+      .about-items * {
+        letter-spacing: 0; }
+      .about-items figure {
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 40%; } }
+  @media (max-width: 767px) {
+    .about-items {
+      letter-spacing: -5px;
+      margin-left: -10%;
+      margin-right: -10%; }
+      .about-items * {
+        letter-spacing: 0; }
+      .about-items figure {
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%; } }
+
+.day-photo-items figure:first-child {
+  margin-top: 0; }
+
+[class*="figure"].fx figure:first-child {
+  margin-top: 0; }
+
+.interviews-items figure .img-content {
+  min-height: 360px; }
+  .interviews-items figure .img-content img {
+    width: 100%; }
+
+.contacts-info-items {
+  font-family: sans-serif; }
+  .contacts-info-items .icon-content {
+    text-align: center;
+    font-size: 10px;
+    width: 30px; }
 
 /*
 										 ---FOOTER---

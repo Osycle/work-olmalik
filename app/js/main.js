@@ -240,11 +240,9 @@ $(function(){
 		if( !headerRange )
 			return;
 		if (event.originalEvent.wheelDelta >= 0) {
-			console.log('Scroll up');
 			minMenu.removeClass("up")
 		}
-		else {			
-			console.log('Scroll down');
+		else {						
 			minMenu.addClass("up")
 		}
 	});
@@ -416,9 +414,11 @@ $(function(){
 			
 
 		});
-		var prevnext = $(".tparrows").append('<svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 65,95 L 20,50  L 65,5 L 60,0 Z" class="arrow"></path></svg>')
-		$(".arrow-container.container").append( prevnext ).css( "top", "350" );
-		$(".arrow-container.container").css( "top", "-"+( $(".rev-slider").css("height").match(/(\d+)/gim)[0]/2 ) + "px" );
+		if( revSlider.length ){
+			var prevnext = $(".tparrows").append('<svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 65,95 L 20,50  L 65,5 L 60,0 Z" class="arrow"></path></svg>')
+			$(".arrow-container.container").append( prevnext ).css( "top", "350" );
+			$(".arrow-container.container").css( "top", "-"+( $(".rev-slider").css("height").match(/(\d+)/gim)[0]/2 ) + "px" );
+		}
 
 	});
 }) (jQuery);

@@ -43,7 +43,7 @@
 [class*="boxes"]{	
 	text-align: center;
 	figure{
-		*:not([class*="text-right"], [class*="text-left"], [class*="text-center"]){
+		*:not([class*="text-right"], [class*="text-left"], [class*="text-center"], p, span){
 			text-align: left;
 			text-align: initial;
 		}
@@ -356,7 +356,7 @@ $header-min-menu: 100px;
 .header-hidden{
 	//position: relative;
 	background-color: $color-1;
-	height: 75px;
+	height: 100px;
 	display: block;
 	@media ( min-width: 991px ){
 		display: none;
@@ -475,7 +475,11 @@ $header-min-menu: 100px;
 }
 
 
-
+.margin-start-content{
+	@media ( min-width:992px ) {
+		margin-top: 125px;
+	}
+}
 
 .menu{
 	//height: $header-top-height;
@@ -530,7 +534,7 @@ $header-min-menu: 100px;
 		position: relative;
 		z-index: 100;
 		li{
-			font-size: 11px;
+			font-size: em(15, 16);
 			text-align: left;
 			width: 100%;
 			&:hover{
@@ -557,7 +561,7 @@ $header-min-menu: 100px;
 	[class*="sub"]{
 		visibility:  hidden;
 		position: absolute;
-		transition: all 0.2s ease-in-out;
+		transition: all 0.15s ease-in-out;
 		font-size: 0.9em;
 		font-weight: 500;
 		z-index: 1;
@@ -977,7 +981,14 @@ body, #page{
 		text-align: center ;
 	}
 }
-
+.breadcrumb-container{
+	font-family: "Arial";
+	@media ( max-width: 991px ){
+		li{
+			width: 100%;
+		}
+	}
+}
 
 a[target="_blank"]{
 	color: $color-1;
@@ -1342,6 +1353,7 @@ h3 a{
 		}
 		.info-panel{
 			margin: 3px 0;
+			font-size: 0.9em;
 		}
 
 		.views-count{
@@ -1356,7 +1368,21 @@ h3 a{
 
 	}
 }
-
+.manyread-items{
+	figure .img-content{
+		img{
+			width: 100%;
+		}
+	}
+	.pie-xs-8{
+		width: 1200px;
+	}
+	@media ( max-width:991px ) {
+		p{
+			font-size: 20px;
+		}
+	}
+}
 .views-count.vam{
 	vertical-align: baseline;
 }
@@ -1426,23 +1452,74 @@ h3 a{
 
 
 
+.m-v-45.over-hidden{
+	margin-top: 47px;
+}
 
 
 
+//about
+.about{}
+.about-items{
+	@include boxes-items( 75, 4 );
+	.cell-hover{
+		background-color: rgba($color-1, 0.5);
+	}
+	figure{
+		@include img-flex-align( flex-end, 193px );
+		.desc-content{
+			font-size: 0.95em;
+		}
+	}
+	@media ( max-width: 991px ){
+		@include boxes-items( 80, 2 );
+	}
+	@media ( max-width: 767px ){
+		@include boxes-items( 80, 1 );
+	}
+
+}
 
 
 
+//day-photo
+.day-photo-items{
+	figure{
+		&:first-child{
+			margin-top: 0;
+		}
+	}
+}
+
+
+[class*="figure"].fx{
+	figure:first-child{
+		margin-top: 0;
+	}
+}
+//interviews-items
+.interviews-items{
+	figure{
+		.img-content{
+			min-height: 360px;
+			img{
+				width: 100%;}
+		}
+	}
+}
 
 
 
+//contacts-info-items
+.contacts-info-items{
+	font-family: sans-serif;
+	.icon-content{
+		text-align: center;
+		font-size: 10px;
+		width: 30px;
+	}
 
-
-
-
-
-
-
-
+}
 
 
 
