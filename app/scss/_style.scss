@@ -44,8 +44,8 @@
 	text-align: center;
 	figure{
 		*:not([class*="text-right"], [class*="text-left"], [class*="text-center"], p, span){
-			text-align: left;
 			text-align: initial;
+			text-align: unset;
 		}
 	}
 	&>div, &>figure{
@@ -193,6 +193,7 @@
 		}
 	}
 }
+
 
 
 .btn-opacity{
@@ -1170,7 +1171,7 @@ a[target="_blank"]{
 }
 
 .grid-img-item {
-  float: left;
+  //float: left;
 }
 
 .grid-img-item img {
@@ -1434,11 +1435,10 @@ h3 a{
 
 .feedback-column{
 	h4{
-		color: white;
 		text-align: center;
 	}
 	.feedback-column-content{
-		background-color: $color-2;
+		
 	}
 	.form-content{
 		padding: 0 15px;
@@ -1527,10 +1527,118 @@ h3 a{
 
 
 
+//citymap
+.citymap-content{
+	.map-container{
+		height: 550px;
+	}
+}
+
+
+
+//history
+.history{
+	.carousel-main{
+		.carousel-cell{
+			text-align: center;
+		}
+		img{
+			max-height: 350px;
+			width: auto;
+		}
+	}
+	.carousel-nav{
+		.carousel-cell{
+			width: (100/4)+% !important;
+		}
+	} 
+}
 
 
 
 
+
+
+//gallery-photo
+.gallery-photo{
+	.grid-img-item{
+		img{
+			width: 100%;
+		}
+	}
+	@media (max-width: 991px) {
+		.grid-img-item{
+			width: 49%;
+		}
+	}
+	@media (max-width: 767px) {
+		.grid-img-item{
+			width: 100%;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+//leadership-items
+.leadership-items{
+
+	figure{
+		border-bottom: 1px solid rgba(black, 0.1);
+	}
+	.img-content{
+		width: 200px;
+	}
+	.desc-content, .img-content{
+		//padding: 0 15px;
+		align-self: center;
+	}
+
+	@media (max-width: 991px) {
+		.pie-flex-content{
+			flex-direction: column;
+		}
+	}
+}
+
+
+//bulletin-board-items
+.bulletin-board-items{
+	figure{
+		@include img-flex-align(flex-end, 150px);
+		.img-content{
+			border:2px solid rgba($color-1, 0.2);
+			border-radius: 15px 15px 0 0;
+			overflow:hidden;
+			transition: all 0.3s ease;
+			&:hover, &:focus{
+				border-color: rgba($color-1, 0.3);
+			}
+		}
+	}
+}
+
+
+
+.img-contnet.first-img{
+	img{
+		margin-top: 0;
+	}
+}
+//bulletin-board-article
+.bulletin-board-article{
+	h4{
+		//border-bottom: 1px solid rgba(black, 0.1); 
+	}
+	.board-item{
+		//border-bottom: 1px solid rgba(black, 0.1); 
+	}
+}
 
 
 
@@ -1729,7 +1837,7 @@ h3 a{
 	  	border: 1px solid transparent;
 	  	transition: all 0.3s ease-out;
 	  	&.is-nav-selected{
-	  	 border-color: $color-4;
+	  	 border-color: $color-1;
 	  	}
 		}
 	}

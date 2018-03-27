@@ -259,6 +259,7 @@ html{
 */
 .table-content{
 	overflow-x: auto;
+}
 	table { 
 		width: 100%;
 		@extend .table; 
@@ -280,7 +281,7 @@ html{
 		}
 
 	}
-}
+
 
 
 
@@ -372,6 +373,12 @@ ul{
 	list-style: none;
 	&:hover{
 		cursor: default;
+	}
+}
+ol{
+	margin-top: 10px;
+	li{
+		line-height: 150%;
 	}
 }
 input:focus, button:focus{

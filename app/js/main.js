@@ -165,6 +165,8 @@ $(function(){
 		var carouselMain = 		$('.carousel-article .carousel-main'),
 				carouselNav = 		$('.carousel-article .carousel-nav');
 
+		var historyCarousel = $('.carousel-article .history-carousel').length || null;
+
 		for( var i = 0 ; i < carouselMain.length ; i++ ){
 
 			var crs = $(carouselMain).eq(i).flickity({
@@ -174,7 +176,7 @@ $(function(){
 				//friction: 1,
 				//selectedAttraction: 1,
 				initialIndex: 0,
-				draggable: true,
+				draggable: checkSm(),
 				contain: true,
 				pageDots: false
 			});
@@ -195,7 +197,7 @@ $(function(){
 			  draggable: true,
 			  cellAlign: 'center',
 			  adaptiveHeight: true,
-			  //contain: true,
+			  contain: true,
 			  pageDots: false
 			});
 
@@ -337,6 +339,17 @@ $(function(){
 
 
 
+	// $.ajax({
+	// 	type: "GET",
+	// 	url: "https://api.weather.yandex.ru/v1/forecast?geoid=213&l10n=true&extra=true",
+	// 	data: {},
+	// 	success: function(e){ console.log(e) },
+	// 	contentType: "Content-Type:application/json;",
+	// 	statusCode: {
+	// 	404: function(){alert( "page not found" );}
+	// 	},
+	// 	complete: function(e){ console.log(e) }
+	// });
 
 
 
