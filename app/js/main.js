@@ -65,7 +65,7 @@ $(function(){
 		}, { });
 
 
-
+	init();
 
 
   // Flikity Carousel
