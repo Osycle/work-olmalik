@@ -44,8 +44,8 @@
 	text-align: center;
 	figure{
 		*:not([class*="text-right"], [class*="text-left"], [class*="text-center"], p, span){
+			text-align: left;
 			text-align: initial;
-			text-align: unset;
 		}
 	}
 	&>div, &>figure{
@@ -508,8 +508,10 @@ $header-min-menu: 100px;
 				//color: $color-1;
 				background-color: $color-2;
 				.sub-menu-1{
-					transform: unset; transform: none;
+					transform: none;
+					transform: unset;
 					opacity: 1;
+					//transition: transform 0.3s ease-in-out, scale 0.3s ease 0.0s;
 					visibility: visible;
 					li{
 						background-color: transparent;
@@ -530,7 +532,7 @@ $header-min-menu: 100px;
 	.sub-menu-1{
 		padding: 3px 5px;
 		//width: 200px;
-		transform: matrix(1,0,0,1,0,7);
+		transform: matrix(1,0,0,1,0,7) scale(0);
 		transform-origin: 40% 0;
 		position: relative;
 		z-index: 100;
@@ -562,13 +564,14 @@ $header-min-menu: 100px;
 	[class*="sub"]{
 		visibility:  hidden;
 		position: absolute;
-		transition: all 0.15s ease-in-out;
+		transition: opacity 0.3s ease-in-out,
+								all 0.3s ease-in-out;
+		opacity: 0;
 		font-size: 0.9em;
 		font-weight: 500;
 		z-index: 1;
 		color: inherit;
 		background-color:  white;
-		opacity: 0;
 		
 	}
 	.sub-menu-2{
@@ -1640,6 +1643,68 @@ h3 a{
 	}
 }
 
+
+
+
+
+
+
+
+
+.publicity{
+
+}
+
+
+
+
+//publicity
+.publicity{
+	.grid-img-item{
+		img{
+			width: 100%;
+		}
+	}
+	@media (max-width: 991px) {
+		.grid-img-item{
+			width: 49%;
+		}
+	}
+	@media (max-width: 767px) {
+		.grid-img-item{
+			width: 100%;
+		}
+	}
+
+}
+
+
+
+
+.sitemap-content{
+	.sitemap-list{
+		text-align: left;
+		li{
+			//text-transform: uppercase;
+			font-style: italic;
+			margin: 15px 0;
+			[class*="sub-menu"]{
+				a{
+					@extend .fa;
+					@extend .fa-mail-forward;
+					&:before{
+						font-size: 10px;
+						margin-right: 10px;
+						transform: rotate(90deg);
+					}
+				}
+			}
+			ul{
+				margin-left: 10%;
+			}
+		}
+	}
+}
 
 
 

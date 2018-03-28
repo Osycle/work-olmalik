@@ -493,7 +493,7 @@ template {
  */
 /* FONT PATH
  * -------------------------- */
-.fa {
+.fa, .sitemap-content .sitemap-list li [class*="sub-menu"] a {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -559,10 +559,10 @@ template {
 .fa-pull-right {
   float: right; }
 
-.fa.fa-pull-left {
+.fa.fa-pull-left, .sitemap-content .sitemap-list li [class*="sub-menu"] a.fa-pull-left {
   margin-right: .3em; }
 
-.fa.fa-pull-right {
+.fa.fa-pull-right, .sitemap-content .sitemap-list li [class*="sub-menu"] a.fa-pull-right {
   margin-left: .3em; }
 
 /* Deprecated as of 4.4.0 */
@@ -572,10 +572,10 @@ template {
 .pull-left {
   float: left; }
 
-.fa.pull-left {
+.fa.pull-left, .sitemap-content .sitemap-list li [class*="sub-menu"] a.pull-left {
   margin-right: .3em; }
 
-.fa.pull-right {
+.fa.pull-right, .sitemap-content .sitemap-list li [class*="sub-menu"] a.pull-right {
   margin-left: .3em; }
 
 .fa-spin {
@@ -956,7 +956,7 @@ template {
 .fa-arrow-down:before {
   content: "\f063"; }
 
-.fa-mail-forward:before,
+.fa-mail-forward:before, .sitemap-content .sitemap-list li [class*="sub-menu"] a:before,
 .fa-share:before {
   content: "\f064"; }
 
@@ -5804,6 +5804,7 @@ html {
 			LIST
 */
 [class*='list-style'] ul:not([class]) {
+  text-align: left;
   margin: 15px 0;
   margin: auto 15px;
   list-style: disc;
@@ -13273,8 +13274,8 @@ http://flickity.metafizzy.co
 [class*="boxes"] {
   text-align: center; }
   [class*="boxes"] figure *:not([class*="text-right"]):not([class*="text-left"]):not([class*="text-center"]):not(p):not(span) {
-    text-align: initial;
-    text-align: unset; }
+    text-align: left;
+    text-align: initial; }
   [class*="boxes"] > div, [class*="boxes"] > figure {
     display: inline-table;
     vertical-align: top; }
@@ -13683,7 +13684,7 @@ http://flickity.metafizzy.co
   .soc li:hover {
     color: #463e76; }
 
-.phones .fa {
+.phones .fa, .phones .sitemap-content .sitemap-list li [class*="sub-menu"] a, .sitemap-content .sitemap-list li [class*="sub-menu"] .phones a {
   font-size: 30px; }
 
 .phones .phone {
@@ -13725,12 +13726,12 @@ http://flickity.metafizzy.co
     .menu ul:not([class*="sub-menu"]) > li:hover {
       background-color: #2b2452; }
       .menu ul:not([class*="sub-menu"]) > li:hover .sub-menu-1 {
-        -webkit-transform: unset;
-        -ms-transform: unset;
-        transform: unset;
         -webkit-transform: none;
         -ms-transform: none;
         transform: none;
+        -webkit-transform: unset;
+        -ms-transform: unset;
+        transform: unset;
         opacity: 1;
         visibility: visible; }
         .menu ul:not([class*="sub-menu"]) > li:hover .sub-menu-1 li {
@@ -13743,9 +13744,9 @@ http://flickity.metafizzy.co
     font-size: 0.90em; }
   .menu .sub-menu-1 {
     padding: 3px 5px;
-    -webkit-transform: matrix(1, 0, 0, 1, 0, 7);
-    -ms-transform: matrix(1, 0, 0, 1, 0, 7);
-    transform: matrix(1, 0, 0, 1, 0, 7);
+    -webkit-transform: matrix(1, 0, 0, 1, 0, 7) scale(0);
+    -ms-transform: matrix(1, 0, 0, 1, 0, 7) scale(0);
+    transform: matrix(1, 0, 0, 1, 0, 7) scale(0);
     -webkit-transform-origin: 40% 0;
     -ms-transform-origin: 40% 0;
     transform-origin: 40% 0;
@@ -13777,15 +13778,15 @@ http://flickity.metafizzy.co
   .menu [class*="sub"] {
     visibility: hidden;
     position: absolute;
-    -webkit-transition: all 0.15s ease-in-out;
-    -o-transition: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+    -webkit-transition: opacity 0.3s ease-in-out, all 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out, all 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, all 0.3s ease-in-out;
+    opacity: 0;
     font-size: 0.9em;
     font-weight: 500;
     z-index: 1;
     color: inherit;
-    background-color: white;
-    opacity: 0; }
+    background-color: white; }
   .menu .sub-menu-2 {
     left: 100%;
     margin-top: -40px;
@@ -14542,6 +14543,31 @@ h3 a {
 
 .img-contnet.first-img img {
   margin-top: 0; }
+
+.publicity .grid-img-item img {
+  width: 100%; }
+
+@media (max-width: 991px) {
+  .publicity .grid-img-item {
+    width: 49%; } }
+
+@media (max-width: 767px) {
+  .publicity .grid-img-item {
+    width: 100%; } }
+
+.sitemap-content .sitemap-list {
+  text-align: left; }
+  .sitemap-content .sitemap-list li {
+    font-style: italic;
+    margin: 15px 0; }
+    .sitemap-content .sitemap-list li [class*="sub-menu"] a:before {
+      font-size: 10px;
+      margin-right: 10px;
+      -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg); }
+    .sitemap-content .sitemap-list li ul {
+      margin-left: 10%; }
 
 /*
 										 ---FOOTER---

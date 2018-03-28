@@ -133,6 +133,7 @@ html{
 */
 [class*='list-style']{
 	ul:not([class]){
+		text-align: left;
 		margin: 15px 0;
 		li{
 			padding-left: 15px;
@@ -156,6 +157,7 @@ html{
 
 .list-style-1{
 	ul:not([class]){
+
 		position: relative;
 		li{
 			list-style: none;
