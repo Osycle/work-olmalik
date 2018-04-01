@@ -16,110 +16,7 @@
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 </head>
-<style type="text/css">
 
-#myDiagramDiv {
-  position: relative;
-  background-color: white;
-  z-index: 300; /* make sure its in front */
-  border: solid 1px blue;
-  width: 100%;
-  height: 500px;
-  pointer-events: auto;
-}
-
-</style>
-<script src="js/go.js"></script> 
-<script id="code">
-
-
-  function init() {
-    if (window.goSamples) goSamples();  // init для этих образцов - вам не нужно вызывать это
-
-    var $ = go.GraphObject.make;  // для краткости при определении шаблонов
-
-    myDiagram = $(go.Diagram, "myDiagramDiv",  // создаем диаграмму для HTML-элемента DIV
-                  {
-                    //initialContentAlignment: go.Spot.Center,  // Централизирует
-                    //initialDocumentSpot: go.Spot.TopCenter,
-                    //initialViewportSpot: go.Spot.TopCenter,
-
-                    layout: $(go.TreeLayout, // specify a Diagram.layout that arranges trees
-                    { angle: 90, layerSpacing: 50 }),
-                     allowCopy: false,
-                    "undoManager.isEnabled": false  // enable undo & redo
-                  });
-
-    // определить простой шаблон узла
-    myDiagram.nodeTemplate =
-      $(go.Node, "Auto", new go.Binding("location", "loc", go.Point.parse),
-        { 
-          background: "#44CCFF",
-          deletable: false , 
-          width: 120, 
-          height: NaN,
-        },
-        $(go.TextBlock,
-          { 
-            row: 2,
-            editable: true,
-            stroke: "white",
-            font: "500 11px sans-serif",
-            textAlign: "center",
-            margin: 10, 
-            maxSize: new go.Size(120, NaN) 
-          },
-          new go.Binding("text", "content", function(e){console.log(e); return e;})
-        )
-      );
-
-    myDiagram.add(
-      $(go.Node, "Vertical",
-
-        $(go.TextBlock, { text: "a Text Block" }),
-        $(go.TextBlock, { text: "a Text Block", stroke: "red" }),
-        $(go.TextBlock, { text: "a Text Block", background: "lightblue" }),
-        $(go.TextBlock, { text: "a Text Block", font: "bold 14pt serif" })
-
-      ));
-
-    myDiagram.linkTemplate = $(go.Link, 
-        {
-          routing: go.Link.Orthogonal, 
-          corner: 0,
-          curve: go.Link,
-          toEndSegmentLength: 0, fromEndSegmentLength: 10
-        },
-        $(go.Shape, { strokeWidth: 1.5 }) // Форма ссылки
-      );
-      console.log( myDiagram )
-    // но используем шаблон ссылки по умолчанию, не устанавливая Diagram.linkTemplate
-
-    // создаем данные модели, которые будут представлены узлами и 
-    var nodeDataArray = [
-      { key: "ul2", loc: "0 300", "content":"Организационно-контрольная группа: Руководитель Ведущий специалист Специалист 1-ой категории" },
-      { key: "ul2_li1", loc: "300 0", "parent": "ul2", "type": "red", "content":"Первый заместитель хокима Алмалыка по вопросам экономики и предпринимательства" },
-      { key: "ul2_li2", loc: "0 100", "parent": "ul2", "content":"Заместитель хокима по вопросам инвестиций, инноваций, поддержки частных предприятий и развитию малых промышленных зон и туризма" },
-      { key: "ul2_li3", loc: "150 100", "parent": "ul2", "content":"Заместитель хокима по вопросам развития промышленности, капитального строительства, коммуникаций и коммунального хозяйства" },
-      { key: "ul2_li4", loc: "350 100","parent": "ul2", "content":"Заместитель хокима по вопросам молодёжной политики, социального развития, культуры и просветительства" },
-      { key: "ul2_li5", loc: "550 100", "parent": "ul2", "content":"Заместитель хокима, председатель городского комитета женщин" },
-
-      { key: "ul2_li6", "parent": "ul2", "top": "45px","content":"Секретарь городской межведомственной комиссии по делам несовершеннолетних" }
-    ]
-    var linkDataArray = [
-      { from: "ul2", to: "ul2_li1"},
-      { from: "ul2",  to: "ul2_li2"},
-      { from: "ul2",  to: "ul2_li3"},
-      { from: "ul2",  to: "ul2_li4"},
-      { from: "ul2",  to: "ul2_li5"},
-      { from: "ul2",  to: "ul2_li6"}
-    ]
-    window.model = new go.GraphLinksModel( nodeDataArray, linkDataArray );
-    myDiagram.model = model;
-    //myDiagram.model = new go.TreeModel(nodeDataArray);
-  }
-
-</script>
 <body>
 	<div id="page">
 		<noscript>
@@ -347,263 +244,22 @@
 				<div class="row">
 
 					<!-- COLUMN 1 -->
-					<div class="column-1 col-md-8 col-lg-9 p-h-15">
-						<!-- about-article -->
-						<div class="about-article">
+					<div class="column-1 col-md-12 col-lg-12 p-h-15">
+						<!-- hokimiyat -->
+						<div class="hokimiyat">
 							<div class="clearfix m-v-45 over-hidden">
-								<div class="about-article-content">
+								<div class="hokimiyat-schema">
 
-                  <div id="sample">
-                    <!-- DIV для диаграммы нуждается в явном размере, иначе мы ничего не увидим.
-                    Это также добавляет границу, чтобы увидеть края окна просмотра. --> 
-                    <div id="myDiagramDiv"></div>
-                    <p>
-                      This isn't a truly <i>minimal</i> demonstration of <b>GoJS</b>,
-                      because we do specify a custom Node template, but it's pretty simple.
-                      The whole source for the sample is shown below if you click on the link.
-                    </p>
-                    <p>
-                      задает этот образец    <a>Diagram.nodeTemplate</a>, with a <a>Node</a> tшаблон, данные связывает как текстовую строку и цвет заливки фигуры.
-                        Для обзора создания собственных шаблонов и данных модели, см <a href="../learn/index.html">Getting Started tutorial.</a>
-                    </p>
-                    <p>
-                      The <a>Diagram.initialContentAlignment</a>  установка вызывает содержимое диаграммы в
-                      для отображения в центре видового экрана диаграммы.
-                    </p>
-                    <p>
-                      Используя мышь и общие команды клавиатуры, вы можете панорамировать, выбирать, перемещать, копировать, удалять и отменять / повторять.
-                      На сенсорных устройствах используйте палец, чтобы действовать как мышь, и удерживайте палец неподвижным, чтобы вызвать контекстное меню.
-                      Контекстное меню по умолчанию поддерживает большинство стандартных команд, которые
-                      включены в это время для выбранного объекта.
-                    </p>
-                    <p>
-                      For a more elaborate and capable sample, see the <a href="basic.html">Basic</a> sample.
-                      For a sample that loads JSON data from the server,
-                      see the <a href="minimalJSON.html">Minimal JSON</a> sample.
-                      For a sample that loads XML data from the server,
-                      see the <a href="minimalXML.html">Minimal XML</a> sample.
-                    </p>
-                  </div>
-                  <div id="chart_div"></div>
+                  <div id="schema-1" class="schema-content"></div>
+                  <div id="schema-2" class="schema-content"></div>
+                  <div id="schema-3" class="schema-content"></div>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {packages:["orgchart"]});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Name');
-        data.addColumn('string', 'Manager');
-        data.addColumn('string', 'ToolTip');
-
-        // For each orgchart box, provide the name, manager, and tooltip to show.
-        data.addRows([
-          [{v:'Mike', f:'Mike<div>President</div>'},'', 'The President'],
-          [{v:'Jim', f:'Jim<div>Vice President</div>'},'Mike', 'VP'],
-          ['Alice', 'Mike', ''],
-          ['Bob', 'Jim', 'Bob Sponge'],
-          ['Carol', 'Bob', '']
-        ]);
-
-        // Create the chart.
-        var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
-        // Draw the chart, setting the allowHtml option to true for the tooltips.
-        chart.draw(data, {allowHtml:true});
-      }
-   </script>
 								</div>
 							</div>
 						</div><!-- ./about-article -->
 					</div>
 
-					<!-- COLUMN 2 -->
-					<div class="column-2 col-md-4 col-lg-3 p-h-15">
-						<!-- short-manyread -->
-						<div class="short-manyread clearfix col-md-12 p-h-15">
-							<h3><a href="manyread.html" title="Многие читают">Многие читают</a></h3>
-							<div class="manyread-items col-xs-12 bg-color-gray p-h-10 p-v-5 figure-m-v-10">
 
-								<figure class="clearfix">
-									<a href="" title="">
-										<div class="pie-xs-4">
-											<div class="img-content">
-												<img src="img/other/thumbnail-read.jpg" alt="">
-											</div>
-										</div>
-										<div class="pie-xs-8 p-h-5">
-											<div class="desc-content text-left-sm">
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit </p>
-											</div>
-											<div class="info-panel clearfix color-1">
-												<div class="text-left views col-xs-4">
-														<img src="img/icons/eye.png" alt="Просмотры">
-														<span class="views-count vam">324</span>
-												</div>
-												<div class="date col-xs-8 text-right">
-													<span>02/02/2018</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</figure>
-								<figure class="clearfix">
-									<a href="" title="">
-										<div class="pie-xs-4">
-											<div class="img-content">
-												<img src="img/other/thumbnail-read.jpg" alt="">
-											</div>
-										</div>
-										<div class="pie-xs-8 p-h-5">
-											<div class="desc-content text-left-sm">
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit </p>
-											</div>
-											<div class="info-panel clearfix color-1">
-												<div class="text-left views col-xs-4">
-														<img src="img/icons/eye.png" alt="Просмотры">
-														<span class="views-count vam">324</span>
-												</div>
-												<div class="date col-xs-8 text-right">
-													<span>02/02/2018</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</figure>
-								<figure class="clearfix">
-									<a href="" title="">
-										<div class="pie-xs-4">
-											<div class="img-content">
-												<img src="img/other/thumbnail-read.jpg" alt="">
-											</div>
-										</div>
-										<div class="pie-xs-8 p-h-5">
-											<div class="desc-content text-left-sm">
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit </p>
-											</div>
-											<div class="info-panel clearfix color-1">
-												<div class="text-left views col-xs-4">
-														<img src="img/icons/eye.png" alt="Просмотры">
-														<span class="views-count vam">324</span>
-												</div>
-												<div class="date col-xs-8 text-right">
-													<span>02/02/2018</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</figure>
-								<figure class="clearfix">
-									<a href="" title="">
-										<div class="pie-xs-4">
-											<div class="img-content">
-												<img src="img/other/thumbnail-read.jpg" alt="">
-											</div>
-										</div>
-										<div class="pie-xs-8 p-h-5">
-											<div class="desc-content text-left-sm">
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit </p>
-											</div>
-											<div class="info-panel clearfix color-1">
-												<div class="text-left views col-xs-4">
-														<img src="img/icons/eye.png" alt="Просмотры">
-														<span class="views-count vam">324</span>
-												</div>
-												<div class="date col-xs-8 text-right">
-													<span>02/02/2018</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</figure>
-								<figure class="clearfix">
-									<a href="" title="">
-										<div class="pie-xs-4">
-											<div class="img-content">
-												<img src="img/other/thumbnail-read.jpg" alt="">
-											</div>
-										</div>
-										<div class="pie-xs-8 p-h-5">
-											<div class="desc-content text-left-sm">
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit </p>
-											</div>
-											<div class="info-panel clearfix color-1">
-												<div class="text-left views col-xs-4">
-														<img src="img/icons/eye.png" alt="Просмотры">
-														<span class="views-count vam">324</span>
-												</div>
-												<div class="date col-xs-8 text-right">
-													<span>02/02/2018</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</figure>
-								<figure class="clearfix">
-									<a href="" title="">
-										<div class="pie-xs-4">
-											<div class="img-content">
-												<img src="img/other/thumbnail-read.jpg" alt="">
-											</div>
-										</div>
-										<div class="pie-xs-8 p-h-5">
-											<div class="desc-content text-left-sm">
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-											</div>
-											<div class="info-panel clearfix color-1">
-												<div class="text-left views col-xs-6">
-														<img src="img/icons/eye.png" alt="Просмотры">
-														<span class="views-count vam">324</span>
-												</div>
-												<div class="date col-xs-6 float-right text-right">
-													<span>02/02/2018</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</figure>
-
-							</div>
-						</div><!-- ./short-manyread -->
-
-						<!-- day-photo -->
-						<div class="day-photo clearfix p-h-15 m-v-30">
-							<h3>Фото дня</h3>
-							<div class="day-photo-content">
-								<a href="day-photo.html" title="Перейти" target="_blank">
-									<div class="img-content">
-										<img src="img/other/day-photo.jpg">
-									</div>
-								</a>
-							</div>
-						</div><!-- ./day-photo -->
-
-						<!-- advt -->
-						<div class="advt clearfix p-h-15 m-v-30">
-							<div class="advt-content">
-								<div class="advt-item">
-									<a href="http://reklama-gravity.ru/wp-content/uploads/2015/12/doggy.gif" title="Перейти" target="_blank">
-										<div class="img-content">
-											<img src="img/other/advt-1.jpg">
-										</div>
-									</a>
-								</div>
-							</div>
-						</div><!-- ./advt -->
-
-						<!-- socicons -->
-						<div class="socicons clearfix p-h-15 m-v-30">
-							<h3>Мы в соц.сетях</h3>
-							<div class="socicons-content">
-								<ul class="list-inline">
-									<li><a href="" title="Инстаграм"><img src="img/icons/instagram.svg" alt=""></li></a>
-									<li><a href="" title="Фейсбук"><img src="img/icons/facebook.svg" alt=""></li></a>
-									<li><a href="" title="Одноклассники"><img src="img/icons/ok.svg" alt=""></li></a>
-									<li><a href="" title="Телеграм"><img src="img/icons/telegram.svg" alt=""></li></a>
-								</ul>
-							</div>
-						</div><!-- ./socicons -->
-					</div>
 
 				<br><br><br><br>
 			</div><!-- ./MAIN-CONTENT -->
@@ -674,6 +330,94 @@
 	<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 	<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
 
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages:["orgchart"]});
+      google.charts.setOnLoadCallback(drawInit);
+
+
+      /*drawChart*/
+      function drawChart( table, addRows ) {
+       var data = new google.visualization.DataTable();
+       var options = {
+        	allowHtml:true,
+        	selectedNodeClass: "is-selected"
+        } || null;
+        data.addColumn('string', 'Name');
+        data.addColumn('string', 'Manager');
+
+        data.addRows( addRows );
+        
+        var chart = new google.visualization.OrgChart( table );
+
+        chart.draw(data, options);
+      }
+      /*drawInit*/
+      function drawInit(argument) {
+
+
+        var table1 = document.getElementById('schema-1');
+        var table1Schema = [
+          [{v:'ul', f:'<div class="item-main"><h1>Хоким города</h1></div>'},''],
+          [{v:'ul-li-1', f:'<div class="item-main">Помошник хокима</div>'},'ul'],
+          [{v:'ul-li-2', f:'<div class="item-main">Помощник хокима по вопросам границы</div>'}, 'ul']
+        ]
+
+        var table2 = document.getElementById('schema-2');
+        var table2Schema = [
+          [{v:'ul-1', f:'<div class="item-main"><h4>Организационно-контрольная группа: Руководитель Ведущий специалист Специалист 1-ой категории</h4></div>'}, ''],
+
+          [{v:'ul-li-1', f:
+          		'<div class="item-main">Первый заместитель хокима Алмалыка по вопросам экономики и предпринимательства</div>'+
+          		'<div class="item-entry">Главный специалист - 1</div>'
+          	}, 'ul-1'
+          ],
+          [{v:'ul-li-2', f:
+          		'<div class="item-main">Заместитель хокима по вопросам инвестиций, инноваций, поддержки частных предприятий и развитию малых промышленных зон и туризма</div>'+
+          		'<div class="item-entry">Главный специалист - 1 <br>Ведущий специалист - 1</div>'
+          	}, 'ul-1'
+          ],
+          [{v:'ul-li-3', f:
+          		'<div class="item-main">Заместитель хокима по вопросам развития промышленности, капитального строительства, коммуникаций и коммунального хозяйства</div>'+
+          		'<div class="item-entry">Главный специалист - 1 <br>Ведущий специалист - 1</div>'
+          	}, 'ul-1'
+          ],
+          [{v:'ul-li-4', f:
+          		'<div class="item-main">Заместитель хокима по вопросам молодёжной политики, социального развития, культуры и просветительства</div>'+
+          		'<div class="item-entry">Главный специалист – 1</div>'
+          	}, 'ul-1'
+          ],
+          [{v:'ul-li-5', f:
+          		'<div class="item-main">Заместитель хокима, председатель городского комитета женщин</div>'+
+          		'<div class="item-entry">Главный специалист - 1</div>'
+          	}, 'ul-1'
+          ],
+        ]
+
+        
+        var table3 = document.getElementById('schema-3');
+        var table3Schema = [
+          [{v:'ul-1', f:'<div class="item-main"><h4>Организационно-контрольная группа: Руководитель Ведущий специалист Специалист 1-ой категории</h4></div>'}, ''],
+
+          [{v:'ul-li-1', f:'<div class="item-main">Секретарь городской межведомственной комиссии по делам несовершеннолетних</div>'}, 'ul-1'],
+          [{v:'ul-li-2', f:'<div class="item-main">Бухгалтерия - 2</div>'}, 'ul-1'],
+          [{v:'ul-li-3', f:'<div class="item-main">Главный юристконсульт</div>'}, 'ul-1'],
+          [{v:'ul-li-4', f:'<div class="item-main">Канцелярия - 2</div>'}, 'ul-1'],
+
+        ]
+
+
+      	drawChart(  table1, table1Schema );
+      	drawChart(  table2, table2Schema );
+      	drawChart(  table3, table3Schema );
+
+
+      }
+
+
+
+   </script>
 
 </body>
 
