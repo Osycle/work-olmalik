@@ -1714,69 +1714,21 @@ h3 a{
 		border-color: transparent!important;
 	}
 }
-.schema-content{
-	table{
-		width: 100%;
-	}
-	h1{
-		color: white;
-	}
-	h4{
-		text-transform: none;
-	}
-	p{
-		font-weight: 600;
-	}
-	&#schema-1{
-		.google-visualization-orgchart-node-medium{
-			//width: (100/6)+%;
-			width: 000.1%;
-		}
-	}
-	&#schema-2{
-		.google-visualization-orgchart-node-medium{
-			width: (100/4.9)+%;
-			//width: 000.1%;
-		}
-		.item-main{
-			min-height: 105px;
-		}
-		.item-entry{
-			min-height: 60px;
-		}
-	}
-	&#schema-3{
-		.google-visualization-orgchart-node-medium{
-			width: 105px;
-		}
-	}
 
-	.item-main, .item-entry{
-		color: white;
-		background: $color-1;	
-		padding: 10px 5px;
-		box-shadow: 3px 3px 14px -4px black;
-	}
-	.item-entry{
-		margin-top: 10px;
-	}
-}
 
 .google-visualization-orgchart-table{
+	table tbody tr:nth-child(odd){
+		background-color: transparent;
+	}
 	.google-visualization-orgchart-connrow-medium, .google-visualization-orgchart-noderow-medi	um{
 		background-color: transparent;
 	}
-
 	.google-visualization-orgchart-node{
 		background: transparent;
-		//background: $color-1;
 		vertical-align: top;
 	}
 	.google-visualization-orgchart-space-medium, .google-visualization-orgchart-noderow-medium, tr{
 		background-color: transparent !important;
-	}
-	table tbody tr:nth-child(odd){
-		background-color: transparent;
 	}
 	.google-visualization-orgchart-linenode{
 		padding: 8px 5px;
@@ -1789,7 +1741,71 @@ h3 a{
 	}
 
 }
+.schema-content{
+	font-family: arial;
+	table{
+		width: 100%;
+	}
+	h1{
+		color: white;
+	}
+	h4{
+		text-transform: none;
+	}
+	p{
+		font-weight: 600;
+	}
+	.item-main, .item-entry{
+		color: white;
+		background: $color-1;	
+		padding: 10px 5px;
+		box-shadow: 3px 3px 14px -4px black;
+	}
+	.item-entry{
+		margin-top: 10px;
+	}
+}
+#schema-1{
+	.schemaNode{
+		//width: (100/6)+%;
+		width: 000.1%;
+	}
+}
+#schema-2{
+	top: -70px;
+	position: relative;
+	.schemaNode{
+		width: (100/7)+%;
+		//width: 000.1%;
+	}
+	.item-main{
+		min-height: 130px;
+	}
+	.item-entry{
+		min-height: 60px;
+	}
 
+	.google-visualization-orgchart-connrow-medium{
+		&:nth-child(3){
+			//display: none;
+			.google-visualization-orgchart-lineleft{
+				border-left: 0 !important;
+			}
+		}
+	}
+	.google-visualization-orgchart-noderow-medium{
+		&:nth-child(2){
+			.schemaNode{
+				display: none;
+			}
+		}
+	}
+}
+#schema-3{
+	.schemaNode{
+		width: 105px;
+	}
+}
 
 /*
 										 ---FOOTER---

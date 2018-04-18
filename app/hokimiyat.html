@@ -342,6 +342,8 @@
        var data = new google.visualization.DataTable();
        var options = {
         	allowHtml:true,
+        	nodeClass: "schemaNode",
+        	//allowCollapse: true,
         	selectedNodeClass: "is-selected"
         } || null;
         data.addColumn('string', 'Name');
@@ -366,7 +368,7 @@
 
         var table2 = document.getElementById('schema-2');
         var table2Schema = [
-          [{v:'ul-1', f:'<div class="item-main"><h4>Организационно-контрольная группа: Руководитель Ведущий специалист Специалист 1-ой категории</h4></div>'}, ''],
+          [{v:'ul-1', f:'<div class="item-main"></div>'}, ''],
 
           [{v:'ul-li-1', f:
           		'<div class="item-main">Первый заместитель хокима Алмалыка по вопросам экономики и предпринимательства</div>'+
@@ -393,6 +395,7 @@
           		'<div class="item-entry">Главный специалист - 1</div>'
           	}, 'ul-1'
           ],
+          [{v:'ul-li-6', f:'<div class="item-main">Организационно-контрольная группа: Руководитель Ведущий специалист</div><div class="item-entry">Специалист 1-ой категории</div>'}, 'ul-1']
         ]
 
         
