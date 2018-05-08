@@ -14243,6 +14243,14 @@ h3 a {
   width: 100%; }
 
 .short-news-items figure .img-content {
+  width: 100%;
+  height: 180px; }
+  .short-news-items figure .img-content img {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content; }
+
+.short-news-items figure .img-content {
   min-height: 180px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -14291,7 +14299,8 @@ h3 a {
 
 .short-events-items figure {
   display: inline-block;
-  padding: 10px; }
+  padding: 10px;
+  width: 100%; }
   .short-events-items figure .desc-content {
     font-size: 12px; }
 
@@ -14300,6 +14309,7 @@ h3 a {
 
 @media (min-width: 992px) {
   .short-events-items figure .img-content img {
+    height: 80px;
     width: 100%; } }
 
 .short-interviews-items figure .img-content {
@@ -14338,6 +14348,27 @@ h3 a {
 
 .short-manyread figure .views img {
   width: 17px; }
+
+.short-events-items h4, .manyread-items h4 {
+  text-transform: none;
+  font-weight: 400;
+  font-size: 10px; }
+
+.short-events-items h3, .manyread-items h3 {
+  font-size: 12px; }
+
+.short-events-items h2, .manyread-items h2 {
+  font-size: 13px; }
+
+.short-events-items h1, .manyread-items h1 {
+  font-size: 14px; }
+
+.short-events-items p, .manyread-items p {
+  display: none; }
+
+.short-events-items .desc-content, .manyread-items .desc-content {
+  overflow: hidden;
+  height: 57px; }
 
 .manyread-items figure .img-content img {
   width: 100%; }
@@ -14541,7 +14572,7 @@ h3 a {
   .bulletin-board-items figure .img-content:hover, .bulletin-board-items figure .img-content:focus {
     border-color: rgba(70, 62, 118, 0.3); }
 
-.img-contnet.first-img img {
+.img-content.first-img img {
   margin-top: 0; }
 
 .publicity .grid-img-item img {
@@ -14617,13 +14648,13 @@ h3 a {
   .schema-content .item-entry {
     margin-top: 10px; }
 
-#schema-1 .schemaNode {
+#schema-1 .google-visualization-orgchart-node-medium {
   width: 000.1%; }
 
 #schema-2 {
   top: -70px;
   position: relative; }
-  #schema-2 .schemaNode {
+  #schema-2 .google-visualization-orgchart-node-medium {
     width: 14.28571%; }
   #schema-2 .item-main {
     min-height: 130px; }
@@ -14631,10 +14662,10 @@ h3 a {
     min-height: 60px; }
   #schema-2 .google-visualization-orgchart-connrow-medium:nth-child(3) .google-visualization-orgchart-lineleft {
     border-left: 0 !important; }
-  #schema-2 .google-visualization-orgchart-noderow-medium:nth-child(2) .schemaNode {
+  #schema-2 .google-visualization-orgchart-noderow-medium:nth-child(2) .google-visualization-orgchart-node-medium {
     display: none; }
 
-#schema-3 .schemaNode {
+#schema-3 .google-visualization-orgchart-node-medium {
   width: 105px; }
 
 /*
